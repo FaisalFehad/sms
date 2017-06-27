@@ -1,0 +1,18 @@
+<div class="panel-body">
+    <div class="form-group">
+      <div class="container">
+          <div class="row">
+            <%= form_for @item do |item| %>
+              <%= item.label :name, "*Item name: " %>
+              <%= item.text_field :name, class: 'form-control' %>
+              <br>
+              <%= item.label :description, "*Short Description: " %>
+              <%= item.text_area :description, class: 'form-control' %>
+              <br>
+            </br?>
+        </div>
+      </div>
+    </div>
+    <%= item.submit "Submit", class: 'btn btn-primary' %>
+  <% end %>
+</div>

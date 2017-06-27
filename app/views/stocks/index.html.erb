@@ -1,7 +1,23 @@
 <% provide(:title, "Home") %>
 
-<h1>Items in Stock</h1>
-<% @items.each do |item| %>
-  <p><%= item.name %></p>
-  <p><%= item.description %></p>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Items in stock</h4>
+  </div>
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-ms-12">
+        <% @items.each do |item| %>
+          <hr>
+            <p><%= item.name %></p>
+          <br>
+            <p><%= truncate(item.description, length:225) %></p>
+          <br>
+            <%= link_to "Edit", edit_stock_path(item) %>
+            <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to delete." } %>
+          <% end %>
+        </div>
+    </div>
+</div>
