@@ -1,4 +1,9 @@
 class Stock < ApplicationRecord
+
+ # Call generate_product_code before create
+ before_create :generate_product_code
+
+
   # Association
   belongs_to :admin
 
@@ -15,5 +20,11 @@ class Stock < ApplicationRecord
   #validates_attachment_content_type :article, content_type: /\Aimage\/.*\Z/
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
+
+protected
+  def generate_product_code
+    self.product_code = SecureRandom.urlsafe_base64
+    generate_token if Stock.exists?(self.product_code)
+  end
 
 end

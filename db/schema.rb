@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628155459) do
+ActiveRecord::Schema.define(version: 20170628182212) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,17 +29,7 @@ ActiveRecord::Schema.define(version: 20170628155459) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "stocks", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "admin_id"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
-    t.index ["admin_id"], name: "index_stocks_on_admin_id"
-  end
+# Could not dump table "stocks" because of following StandardError
+#   Unknown type 'fixnum' for column 'product_code'
 
 end
