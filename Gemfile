@@ -12,6 +12,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'devise-bootstrap-views'
 
 gem 'devise', '~> 4.3'
+gem 'paperclip', '~> 5.0'
 
 
 gem 'rails', '~> 5.1.2'

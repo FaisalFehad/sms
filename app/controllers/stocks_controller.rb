@@ -54,6 +54,6 @@ class StocksController < ApplicationController
   end
 
   def stock_params
-    params.fetch(:stock).permit(:name, :description)
+    params.fetch(:stock).permit(:name, :description, :image)
   end
 end

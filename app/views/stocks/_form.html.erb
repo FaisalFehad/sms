@@ -2,7 +2,10 @@
     <div class="form-group">
       <div class="container">
           <div class="row">
-            <%= form_for @item do |item| %>
+            <%= form_for @item, html: { multipart: true } do |item| %>
+              <%= item.label :image, "Uploade an image:" %>
+              <%= item.file_field :image %>
+              <br>
               <%= item.label :name, "*Item name: " %>
               <%= item.text_field :name, class: 'form-control' %>
               <br>
