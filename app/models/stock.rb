@@ -3,7 +3,6 @@ class Stock < ApplicationRecord
  # Call generate_product_code before create
  before_create :generate_product_code
 
-
   # Association
   belongs_to :admin
 
@@ -26,5 +25,4 @@ protected
     self.product_code = SecureRandom.urlsafe_base64
     generate_token if Stock.exists?(self.product_code)
   end
-
 end
