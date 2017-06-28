@@ -1,4 +1,5 @@
 class StocksController < ApplicationController
+  before_action :authenticate_admin!, :except => [:index]
 
   def index
     @items = Stock.all.order('created_at DESC')
@@ -15,7 +16,6 @@ class StocksController < ApplicationController
        redirect_to root_path
     else
       flash[:alart] = "Error: Make sure that you submitting valid information"
-      render @new
     end
   end
 
@@ -46,7 +46,6 @@ class StocksController < ApplicationController
       flash[:alert] = "#{@item.name} could not be deleted."
     end
   end
-
 
   private
 
