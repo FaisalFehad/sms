@@ -4,15 +4,27 @@ class StockTest < ActiveSupport::TestCase
 
   def setup
     @my_item =  Stock.new(name: "An item", description: "this is my very cool item description", admin_id: 1)
+    @long_string = "a" * 1000
+    @invalid_names = %w[ nil ," ", "a",  "#long_string"]
+    @invalid_descriptions = @invalid_names + ["aaaa"]
   end
 
-  test 'should not save item without a name' do
-    @my_item.name = ""
-    assert_not @my_item.valid?
+
+  test 'should be invalid names' do
+    @invalid_names.each do |invalid_name|
+      @my_item.name = invalid_name
+      assert_not @my_item.valid?
+    end
   end
 
-  test 'should not save an item with very long description ' do
-    @my_item.description = "a" * 600
-    assert_not @my_item.valid?
+  test 'should be invalid descriptions' do
+    @invalid_descriptions.each do |invalid_description|
+      @my_item.description = invalid_description
+      assert_not @my_item.valid?
+    end
   end
+
+
+
+
 end

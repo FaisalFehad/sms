@@ -12,6 +12,9 @@
               <%= item.label :description, "*Short Description: " %>
               <%= item.text_area :description, class: 'form-control' %>
               <br>
+              <%= item.label :fixed, "fixed", value: true %>
+              <%= item.check_box :fixed %>
+              <br>
             </br>
         </div>
       </div>

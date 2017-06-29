@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-  before_action :authenticate_admin!, :except => [:index]
+  before_action :authenticate_admin!, :except => [:index, :show]
 
   def index
     @items = Stock.all.order('created_at DESC')
@@ -54,6 +54,6 @@ class StocksController < ApplicationController
   end
 
   def stock_params
-    params.fetch(:stock).permit(:name, :description, :image)
+    params.fetch(:stock).permit(:name, :description, :image, :fixed)
   end
 end

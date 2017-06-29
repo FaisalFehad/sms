@@ -16,4 +16,17 @@ class StocksControllerTest < ActionDispatch::IntegrationTest
     get new_stock_url
     assert_redirected_to new_admin_session_url
   end
+
+  test "should get admin sing in page" do
+    get new_admin_session_url
+    assert_response :success
+    assert_select "title", "Sign in | #{@base_title}"
+  end
+
+  test "should show item" do
+    item_stock = stocks(:item)
+
+    get "/stocks/#{item_stock.id}"
+    assert_response :success
+  end
 end
