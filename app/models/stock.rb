@@ -15,7 +15,7 @@ class Stock < ApplicationRecord
 
   # paperclip
   has_attached_file :image, styles: { image: "700x400>", thumb: "100x100>" },
-   default_url: "/images/:style/missing.png"
+   default_url: "/images/missing.png"
   #validates_attachment_content_type :article, content_type: /\Aimage\/.*\Z/
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 

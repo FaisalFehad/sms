@@ -23,8 +23,4 @@ class StockTest < ActiveSupport::TestCase
       assert_not @my_item.valid?
     end
   end
-
-
-
-
 end

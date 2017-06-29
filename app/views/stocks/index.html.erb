@@ -18,12 +18,14 @@
             </a>
           <% end %>
           <br>
-            <p><%= item.name %></p>
+            <h3><%= item.name %></h3>
           <br>
-            <p><%= truncate(item.description, length:225) %></p>
+            <p><small><%= truncate(item.description, length:225) %></small></p>
           <br>
-            <%= link_to "Edit", edit_stock_path(item) %>
-            <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to delete." } %>
+            <% if admin_signed_in? %>
+              <%= link_to "Edit", edit_stock_path(item) %>
+              <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to delete." } %>
+            <% end %>
           <% end %>
         </div>
     </div>
