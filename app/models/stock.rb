@@ -6,6 +6,9 @@ class Stock < ApplicationRecord
   # Association
   belongs_to :admin
 
+  has_many :orders
+  has_many :users, through: :orders
+
   # Capialise item names before saving into db
   before_save { self.name = name.capitalize}
 

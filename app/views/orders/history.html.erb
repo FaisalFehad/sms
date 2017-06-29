@@ -1,0 +1,26 @@
+<%= provide(:title, "Your orders") %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Your orders history</h4>
+  </div>
+<div class="panel-body">
+    <div class="form-group">
+      <div class="container">
+          <div class="row">
+            <% @orders.each do |order| %>
+              <h4>Product Name: <%= order.stock.name %></h4>
+              <br>
+              <p>Order# <%= order.stock.id %></p>
+              <br>
+              <p>Short Discrtiption: <%= order.stock.description %></p>
+              <br>
+              <p>Fixed order? <%= boolean_to_words(order.stock) %></p>
+              <br>
+              <p><small>Order Date: <%= order.created_at.to_time.strftime('%e %B at %l:%M %p') %></small></p>
+              <hr>
+            <% end %>
+              <br>
+        </div>
+      </div>
+    </div>
+</div>
