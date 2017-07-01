@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-  before_action :authenticate_admin!, :except => [:index, :show]
+   before_action :authenticate_admin!, :except => [:index, :show]
 
   def index
     @items = Stock.all.order('created_at DESC')

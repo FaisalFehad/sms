@@ -1,20 +1,25 @@
 <%= provide(:title, "Item") %>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-        <h1><%= @item.name %></h1>
-        <br>
-        <% if @item.image? %>
-          <a class="thumbnail">
-            <div class="ratio"></div>
-              <%= image_tag @item.image.url(:image) %>
-        <% end %>
+<div class="panel-body">
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+      <h1><%= @item.name %></h1>
+      <br>
+      <% if @item.image? %>
+        <a class="thumbnail">
+          <%= image_tag @item.image.url(:image) %>
         </a>
+      <% end %>
+      <br>
+      <h4>Product code: <%= @item.product_code %></h4>
+      <h4>Description:  <%= @item.description %></h4>
+      <br>
+      <% if user_signed_in? %>
+        <%= link_to "Order now!", stock_order_path(stock_id: @item, user: current_user), method: :post %>
+
+      <% end %>
+      <br>
     </div>
-  </div>
-    <h4>Product code: <%= @item.product_code %></h4>
-    <hr>
-    <h4>Description:  <%= @item.description %></h4>
+    </div>
   </div>
 </div>
