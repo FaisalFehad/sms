@@ -25,7 +25,7 @@ class Stock < ApplicationRecord
 
 protected
   def generate_product_code
-    self.product_code = SecureRandom.urlsafe_base64
-    generate_token if Stock.exists?(self.product_code)
+    self.product_code = rand(1..1000000000)
+    generate_product_code if Stock.exists?(self.product_code)
   end
 end
