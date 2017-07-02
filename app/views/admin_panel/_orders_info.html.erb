@@ -1,0 +1,10 @@
+
+<% @orders.each do |order| %>
+  <p>ID:        <%= order.id %></p>
+  <p>Product:   <%= order.stock.name %></p>
+  <p>Type:      <%= boolean_to_type(order.stock.fixed?) %> </p>
+  <p>Orderd by: <%= order.user.email %></p>
+  <p>Date:      <%= order.created_at.to_formatted_s(:db) %></p>
+  <br>
+  <hr>
+<% end %>

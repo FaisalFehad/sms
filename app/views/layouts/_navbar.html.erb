@@ -17,14 +17,16 @@
       </ul>
         <ul class="nav navbar-nav navbar-right">
           <!-- Everyone can see -->
-          <li><%= link_to 'Admin Sign in', new_admin_session_path %></li>
-          <li><%= link_to 'User Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Sign in as Admin', new_admin_session_path %></li>
+          <li><%= link_to 'Sign in as User', new_user_session_path %></li>
           <!-- Only admin can see -->
           <% if admin_signed_in? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin options <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'List an item', new_stock_path %></li>
+                <li><%= link_to 'Orders', all_orders_path %></li>
+                <li><%= link_to 'Users', all_users_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to 'Admin Sign out', destroy_admin_session_path, method: :delete %></li>
               </ul>
@@ -35,7 +37,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User options <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Orders History', history_path %></li>
+                <li><%= link_to 'Your Orders', history_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to 'User Sign out', destroy_user_session_path, method: :delete %></li>
               </ul>

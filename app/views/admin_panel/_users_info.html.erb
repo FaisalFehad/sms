@@ -1,0 +1,9 @@
+
+<% @users.each do |user| %>
+  <p>Email: <%= user.email %></p>
+  <p>Total Orders: <%= user.orders.count %></p>
+  <p>Joined at: <%= user.created_at.to_formatted_s(:db) %></p>
+  <p>Active: <%= user.is_active? %></p>
+  <br>
+  <hr>
+<% end %>
