@@ -17,7 +17,7 @@ class StocksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_admin_session_url
   end
 
-  test "should get admin sing in page" do
+  test "should get admin sing in page when not signed in as admin" do
     get new_admin_session_url
     assert_response :success
     assert_select "title", "Sign in | #{@base_title}"
@@ -25,7 +25,6 @@ class StocksControllerTest < ActionDispatch::IntegrationTest
 
   test "should show item" do
     item_stock = stocks(:item)
-
     get "/stocks/#{item_stock.id}"
     assert_response :success
   end
