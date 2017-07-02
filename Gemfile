@@ -13,6 +13,7 @@ gem 'devise-bootstrap-views'
 
 gem 'devise', '~> 4.3'
 gem 'paperclip', '~> 5.0'
+gem 'whenever', :require => false
 
 
 gem 'rails', '~> 5.1.2'
