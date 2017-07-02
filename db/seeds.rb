@@ -21,3 +21,12 @@ end
                 description: Faker::Lorem.characters(char_count = 150),
                 admin_id: random(1..10)) # Only the first 10 admins with have the stocks
 end
+
+# Orders
+130.times do |o|
+  # https://stackoverflow.com/questions/2752231/random-record-in-activerecord
+  user = User.order("RANDOM()").first
+  stock = Stock.order("RANDOM()").first
+  order = Order.new
+  save = user.orders.create(user_id: user.id, stock_id: stock.id)
+end
