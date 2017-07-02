@@ -15,8 +15,7 @@
       <h4>Description:  <%= @item.description %></h4>
       <br>
       <% if user_signed_in? %>
-        <%= link_to "Order now!", stock_order_path(stock_id: @item, user: current_user), method: :post %>
-
+        <%= link_to "Order now!", stock_order_path(stock_id: @item, user: current_user), method: :post, class: 'btn btn-default' %>
       <% end %>
       <br>
     </div>

@@ -10,9 +10,13 @@ class OrdersController < ApplicationController
     order = Order.new
     order.user_id = params[:user]
     order.stock_id = params[:stock_id]
-    order.save
-    if true
-      redirect_to :root
+
+    if order.save
+      redirect_to history_path
+      flash[:notice] = "Your order has been created!"
+    else
+      render root_path
+      flash[:alert] = "Error: Your order didn't get save submitted"
     end
   end
 end

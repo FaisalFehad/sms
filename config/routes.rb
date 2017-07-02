@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :stocks do
-    post '/:user', to: 'orders#create', as: 'order'
+    post '/:user/', to: 'orders#create', as: 'order'
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
