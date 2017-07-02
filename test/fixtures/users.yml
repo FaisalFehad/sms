@@ -1,2 +1,6 @@
 my_user:
   email: "fobar123@test.com"
+
+disabled_user_account:
+  email: "fobaaz123@test.com"
+  is_active: false
