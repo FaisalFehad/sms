@@ -5,5 +5,11 @@
   <p>Joined at: <%= user.created_at.to_formatted_s(:db) %></p>
   <p>Active: <%= user.is_active? %></p>
   <br>
+  <% if user.is_active %>
+    <%= link_to "Deactivate", activation_path(user_id: user.id), method: :post, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to "Avtivate", activation_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+  <br>
   <hr>
 <% end %>

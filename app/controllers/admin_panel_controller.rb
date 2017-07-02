@@ -8,4 +8,17 @@ class AdminPanelController < ApplicationController
   def users
     @users = User.all.order('email ASC')
   end
+
+  def activation
+    user = User.find_by(id: params[:user_id])
+    if user.is_active?
+      user.update(is_active: false)
+      redirect_back(fallback_location: all_users_path)
+      flash[:alert] = "User has been deactivated!"
+    else
+      user.update(is_active: true)
+      redirect_back(fallback_location: all_users_path)
+      flash[:alert] =  "User has been activated!"
+    end
+  end
 end
