@@ -1,0 +1,12 @@
+<h3>Important:</h3>
+<% if @item.fixed %>
+  <h4>This item is fixed: You will need to return it withen 2 days. You might
+    receive a fine or get your account disabled if you fail to return the time
+    within the required time.
+  </h4>
+  <% else %>
+  <h4>
+    This item is consumable: You are not expected to return the item. Please use
+     our resources responsibly.
+  </h4>
+<% end %>
