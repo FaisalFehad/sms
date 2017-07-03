@@ -12,7 +12,7 @@ class StocksController < ApplicationController
   def create
     @item = current_admin.stocks.new(stock_params)
     if @item.save
-       flash[:notice] = "A #{@item.name} has been listed."
+       flash[:notice] = "#{@item.name} has been listed."
        redirect_to root_path
     else
       flash[:alart] = "Error: Make sure that you submitting valid information"
