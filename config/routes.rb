@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     post '/:user/', to: 'orders#create', as: 'order'
   end
 
+
+  post '/:order/', to: 'orders#return', as: 'return'
+
+
   devise_for :admins
   devise_for :users
   get '/history', to: 'orders#history'

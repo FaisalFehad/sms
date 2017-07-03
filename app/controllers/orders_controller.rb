@@ -16,7 +16,18 @@ class OrdersController < ApplicationController
       flash[:notice] = "Your order has been created!"
     else
       render root_path
-      flash[:alert] = "Error: Your order didn't get save submitted"
+      flash[:alert] = "Error: Your order didn't get save submitted."
+    end
+  end
+
+  def return
+    order = Order.new
+    order = Order.find(params[:order])
+    order = order.returned = true
+    if order.save
+      flash[:notice] = "Thank you for returing the item!"
+    else
+      flash[:alert] = "Error: Your has not been returned."
     end
   end
 end
