@@ -15,18 +15,16 @@ gem 'devise-bootstrap-views'
 gem 'devise', '~> 4.3'
 gem 'paperclip', '~> 5.0'
 gem 'whenever', :require => false
+gem 'faker', '~> 1.7', '>= 1.7.3'
 
 
 gem 'rails', '~> 5.1.2'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-
-
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'faker', '~> 1.7', '>= 1.7.3'
 
 
 group :development, :test do
