@@ -39,8 +39,20 @@ ActiveRecord::Schema.define(version: 20170702232831) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-# Could not dump table "stocks" because of following StandardError
-#   Unknown type 'fixnum' for column 'product_code'
+  create_table "stocks", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "admin_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "product_code"
+    t.boolean "fixed", default: false
+    t.index ["admin_id"], name: "index_stocks_on_admin_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
