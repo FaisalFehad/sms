@@ -23,10 +23,12 @@ class OrdersController < ApplicationController
   def return
     order = Order.new
     order = Order.find(params[:order])
-    order = order.returned = true
+    order.returned  = true
     if order.save
+      redirect_back(fallback_location: history_path)
       flash[:notice] = "Thank you for returing the item!"
     else
+      redirect_back(fallback_location: history_path)
       flash[:alert] = "Error: Your has not been returned."
     end
   end
