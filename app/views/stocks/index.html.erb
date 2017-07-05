@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>Items in stock</h4>
+    <h4>Items in stock: <%= @items.count %></h4>
   </div>
 
 <div class="wrapper">
@@ -18,15 +18,22 @@
             </a>
           <% end %>
           <br>
-            <h3><%=link_to item.name, item %></h3>
+            <h4><%=link_to item.name, item %></h4>
           <br>
-            <p><small><%= truncate(item.description, length:225) %></small></p>
+            <p><small><%= truncate(item.description, length:120) %></small></p>
           <br>
             <% if admin_signed_in? %>
-              <%= link_to "Edit", edit_stock_path(item) %>
-              <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to delete." } %>
+              <%= link_to "Edit", edit_stock_path(item), class: "btn btn-default btn-sm" %>
+              <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to continue." }, class: "btn btn-default btn-sm" %>
             <% end %>
           <% end %>
-        </div>
-    </div>
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li>
+            <%= will_paginate(@items, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </div>

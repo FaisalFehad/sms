@@ -1,34 +1,31 @@
 <%= provide(:title, "Your orders") %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>Your orders history</h4>
   </div>
+
 <div class="panel-body">
-    <div class="form-group">
-      <div class="container">
-          <div class="row">
-            <% @orders.each do |order| %>
-              <h4>Product Name: <%= order.stock.name %></h4>
-              <br>
-              <p>Order# <%= order.id %></p>
-              <br>
-              <br>
-              <p>Item ID: <%= order.stock.id %></p>
-              <br>
-              <p>Short Discrtiption: <%= order.stock.description %></p>
-              <br>
-              <p>Type: <%= boolean_to_type(order.stock.fixed) %></p>
-              <br>
-              <% if order.stock.fixed %>
-                <p>Returned?: <%= order.returned %></p>
-                <p>Last day to return: <%= (order.stock.created_at + 2.day).to_time.strftime('%e %B at %l:%M %p') %></p>
-                <%= link_to "Return #{order.stock.name}!", return_path(order), method: :post, class: 'btn btn-success' %>
-              <% end %>
-              <p><small>Order Date: <%= order.created_at.to_time.strftime('%e %B at %l:%M %p') %></small></p>
-              <hr>
-              <br>
-            <% end %>
-        </div>
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <% @orders.each do |order| %>
+          <h4>Product Name: <%= order.stock.name %></h4>
+          <p>Order: #<%= order.id %></p>
+          <p>Item ID: <%= order.stock.id %></p>
+          <p>Returned?: <%= boolean_to_words(order.returned) %></p>
+
+          <p>Short Discrtiption: <%= order.stock.description %></p>
+          <p>Type: <%= boolean_to_type(order.stock.fixed) %></p>
+          <p><small>Order Date: <%= order.created_at.to_time.strftime('%e %B at %l:%M %p') %></small></p>
+          <% if order.stock.fixed && !order.returned %>
+            <p>Returned?: <%= order.returned %></p>
+            <p>Last day to return: <%= (order.stock.created_at + 2.day).to_time.strftime('%e %B at %l:%M %p') %></p>
+            <%= link_to "Return #{order.stock.name}!", return_path(order), method: :post, class: 'btn btn-sm btn-success' %>
+          <% end %>
+          <hr>
+        <% end %>
       </div>
     </div>
+  </div>
 </div>

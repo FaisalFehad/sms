@@ -16,6 +16,8 @@ gem 'devise', '~> 4.3'
 gem 'paperclip', '~> 5.0'
 gem 'whenever', :require => false
 gem 'faker', '~> 1.7', '>= 1.7.3'
+gem 'will_paginate', '~> 3.1.0'
+
 
 
 gem 'rails', '~> 5.1.2'

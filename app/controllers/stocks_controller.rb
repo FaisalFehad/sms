@@ -2,7 +2,7 @@ class StocksController < ApplicationController
    before_action :authenticate_admin!, :except => [:index, :show]
 
   def index
-    @items = Stock.all.order('created_at DESC')
+    @items = Stock.paginate(:page => params[:page], :per_page => 20)
   end
 
   def new
