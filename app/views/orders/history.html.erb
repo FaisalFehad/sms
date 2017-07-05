@@ -14,7 +14,6 @@
           <p>Order: #<%= order.id %></p>
           <p>Item ID: <%= order.stock.id %></p>
           <p>Returned?: <%= boolean_to_words(order.returned) %></p>
-
           <p>Short Discrtiption: <%= order.stock.description %></p>
           <p>Type: <%= boolean_to_type(order.stock.fixed) %></p>
           <p><small>Order Date: <%= order.created_at.to_time.strftime('%e %B at %l:%M %p') %></small></p>
