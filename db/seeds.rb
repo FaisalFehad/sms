@@ -1,5 +1,6 @@
 # https://stackoverflow.com/questions/198460/how-to-get-a-random-number-in-ruby
 def random(range)
+  # https://stackoverflow.com/questions/2752231/random-record-in-activerecord
   range.to_a.sample
 end
 
@@ -19,12 +20,12 @@ end
 200.times do |s|
   Stock.create!(name: Faker::Color.color_name,
                 description: Faker::Lorem.characters(char_count = 150),
+                fixed: [true, false].sample,
                 admin_id: random(1..10)) # Only the first 10 admins with have the stocks
 end
 
 # Orders
 130.times do |o|
-  # https://stackoverflow.com/questions/2752231/random-record-in-activerecord
   user = User.order("RANDOM()").first
   stock = Stock.order("RANDOM()").first
   order = Order.new
