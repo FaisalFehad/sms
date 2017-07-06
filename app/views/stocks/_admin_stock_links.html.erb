@@ -1,0 +1,4 @@
+<% if admin_signed_in? %>
+  <p><a <%= link_to "Edit", edit_stock_path(item), class: "btn btn-default btn-xs" %></a> <a <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to continue." }, class: "btn btn-default btn-xs" %>
+  </a></p>
+<% end %>

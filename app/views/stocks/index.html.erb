@@ -5,35 +5,27 @@
     <h4>Items in stock: <%= @items.count %></h4>
   </div>
 
-<div class="wrapper">
   <div class="container">
+    <!-- white space -->
     <div class="row">
-      <div class="col-md-12 col-ms-12">
-        <% @items.each do |item| %>
-        <!-- image -->
-        <% if item.image? %>
-            <a class="thumbnail">
-              <div class="ratio"></div>
-              <%= image_tag item.image.url(:thumb) %>
-            </a>
-          <% end %>
-          <br>
-            <h4><%=link_to item.name, item %></h4>
-          <br>
-            <p><small><%= truncate(item.description, length:120) %></small></p>
-          <br>
-            <% if admin_signed_in? %>
-              <%= link_to "Edit", edit_stock_path(item), class: "btn btn-default btn-sm" %>
-              <%= link_to "Delete", stock_path(item), method: :delete, data: { confirm: "You are attempting to delete the post. Click 'Ok' to continue." }, class: "btn btn-default btn-sm" %>
-            <% end %>
-          <% end %>
-      <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li>
-            <%= will_paginate(@items, :renderer => WillPaginate::ActionView::LinkRenderer) %>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-</div>
+      <div class="col-sm-12" style="height:50px"></div>
+    </div>
+
+    <div class="row">
+      <% @items.each do |item| %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <%= render 'stock_image', item: item %>
+            <div class="caption">
+              <h4><%=link_to item.name, item %></h4>
+              <hr>
+              <p><small><%= truncate(item.description, length:40) %></small></p>
+              <p><small><%= item_type_in_words(item) %></small></p>
+              <%= render 'admin_stock_links', item: item %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  <%= will_paginate(@items, :renderer => WillPaginate::ActionView::LinkRenderer) %>

@@ -12,4 +12,14 @@ module ApplicationHelper
     else "Unknown type"
     end
   end
+
+  def item_type_in_words(item)
+    if item.fixed
+      "Fixed Item"
+    elsif !item.fixed
+      "Consumable Item"
+    else
+      "Unknown type"
+    end
+  end
 end

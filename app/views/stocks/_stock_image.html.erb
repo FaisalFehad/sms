@@ -1,0 +1,6 @@
+<% if item.image? %>
+  <a class="thumbnail">
+    <div class="ratio"></div>
+    <%= image_tag item.image.url(:thumb) %>
+  </a>
+<% end %>
