@@ -1,27 +1,29 @@
 <%= provide(:title, "Item") %>
+
 <div class="panel-body">
   <div class="form-group">
     <div class="container">
       <div class="row">
-      <h1><%= @item.name %></h1>
-      <br>
-      <% if @item.image? %>
-        <a class="thumbnail">
-          <%= image_tag @item.image.url(:image) %>
-        </a>
-      <% end %>
-      <br>
-      <h4>Product code: <%= @item.product_code %></h4>
-      <h4>Description:  <%= @item.description %></h4>
-      <br>
-
-      <% if user_signed_in? %>
-        <%= render 'lending_information' %>
-        <br>
-        <%= link_to "Order now!", stock_order_path(stock_id: @item, user: current_user), method: :post, class: 'btn btn-default' %>
-      <% end %>
-      <br>
-    </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1><%= @item.name %></h1></div>
+          <div class="panel-body">
+            <% if @item.image? %>
+              <a class="thumbnail">
+                <%= image_tag @item.image.url(:image) %>
+              </a>
+            <% end %>
+            <br>
+            <h4>Product code: <%= @item.product_code %></h4>
+            <h4>Description:  <%= @item.description %></h4>
+            <br>
+            <% if user_signed_in? %>
+              <%= render 'lending_information' %>
+              <br>
+              <%= link_to "Order now!", stock_order_path(stock_id: @item, user: current_user), method: :post, class: 'btn btn-default' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
