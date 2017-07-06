@@ -8,13 +8,8 @@
 </div>
 
 
-  <!-- white space -->
-  <div class="row">
-    <div class="col-sm-12" style="height:20px"></div>
-  </div>
-
-
 <div class="container">
+  <%= render 'layouts/white_space' %>
   <%= render 'users_info' %>
   <%= will_paginate @users %>
 </div>
