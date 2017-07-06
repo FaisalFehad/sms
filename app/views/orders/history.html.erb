@@ -15,9 +15,11 @@
     <% @orders.each do |order| %>
       <div class="col-md-11">
         <div class="thumbnail">
-            <%= render 'stocks/stock_image', item: order.stock %>
+            <% if Stock.exists?(order.stock.id) %>
+              <%= render 'stocks/stock_image', item: order.stock %>
+            <% end %>
           <div class="caption">
-            <h4>Product Name: <%= order.stock.name %></h4>
+            <h4>Product Name: <%= link_to order.stock.name, stock_path(order.stock) %></h4>
             <p>Order: #<%= order.id %></p>
             <p>Item ID: <%= order.stock.id %></p>
             <p>Type: <%= boolean_to_type(order.stock.fixed) %></p>
