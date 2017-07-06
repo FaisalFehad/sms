@@ -2,7 +2,7 @@ class AdminPanelController < ApplicationController
   before_action :authenticate_admin!
 
   def orders
-    @orders = Order.all.order('created_at DESC')
+    @orders = Order.all.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
   end
 
   def users

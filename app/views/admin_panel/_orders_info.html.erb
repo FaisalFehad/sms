@@ -1,10 +1,20 @@
 
-<% @orders.each do |order| %>
-  <p>ID:        <%= order.id %></p>
-  <p>Product:   <%= order.stock.name %></p>
-  <p>Type:      <%= boolean_to_type(order.stock.fixed?) %> </p>
-  <p>Orderd by: <%= order.user.email %></p>
-  <p>Date:      <%= order.created_at.to_formatted_s(:db) %></p>
-  <br>
-  <hr>
-<% end %>
+<div class="row">
+  <% @orders.each do |order| %>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="panel panel-default">
+        <div class="container">
+          <% if Stock.exists?(order.id) %>
+            <p>Product:   <%= link_to order.stock.name, stock_path(order) %></p>
+          <% else %>
+              <p>Product: <%= order.stock.name %> (Out of Stock)</p>
+          <% end %>
+          <p>ID:        <%= order.id %></p>
+          <p>Type:      <%= boolean_to_type(order.stock.fixed?) %></p>
+          <p>Orderd by: <%= order.user.email %></p>
+          <p>Date:      <%= order.created_at.to_formatted_s(:db) %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
