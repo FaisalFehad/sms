@@ -23,7 +23,7 @@
             <p>Type: <%= boolean_to_type(order.stock.fixed) %></p>
             <p>Returned?: <%= boolean_to_words(order.returned) %></p>
             <p>Order Date: <%= order.created_at.to_time.strftime('%e %B at %l:%M %p') %></p>
-            <p>Short Discrtiption: <%= order.stock.description %></p>
+            <p>Short Discrtiption: <%= truncate(order.stock.description, length: 80) %></p>
             <% if order.stock.fixed && !order.returned %>
               <p>Returned?: <%= order.returned %></p>
               <p>Last day to return: <%= (order.stock.created_at + 2.day).to_time.strftime('%e %B at %l:%M %p') %></p>
