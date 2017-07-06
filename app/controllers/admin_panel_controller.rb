@@ -6,7 +6,7 @@ class AdminPanelController < ApplicationController
   end
 
   def users
-    @users = User.all.order('email ASC')
+    @users = User.all.order('email ASC').paginate(:page => params[:page], :per_page => 25)
   end
 
   def activation

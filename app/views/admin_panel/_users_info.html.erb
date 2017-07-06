@@ -1,15 +1,23 @@
 
-<% @users.each do |user| %>
-  <p>Email: <%= user.email %></p>
-  <p>Total Orders: <%= user.orders.count %></p>
-  <p>Joined at: <%= user.created_at.to_formatted_s(:db) %></p>
-  <p>Active: <%= user.is_active? %></p>
-  <br>
-  <% if user.is_active %>
-    <%= link_to "Deactivate", activation_path(user_id: user.id), method: :post, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to "Avtivate", activation_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="panel panel-default">
+        <div class="container">
+          <p>Email: <%= user.email %></p>
+          <p>Total Orders: <%= user.orders.count %></p>
+          <p>Joined at: <%= user.created_at.to_formatted_s(:db) %></p>
+          <p>Active: <%= user.is_active? %></p>
+          <br>
+          <% if user.is_active %>
+            <%= link_to "Deactivate", activation_path(user_id: user.id), method: :post, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to "Avtivate", activation_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+          <% end %>
+          <br>
+          <hr>
+        </div>
+      </div>
+    </div>
   <% end %>
-  <br>
-  <hr>
-<% end %>
+</div>

@@ -1,16 +1,20 @@
 <%= provide(:title, "Users") %>
+
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>Admin Panel: Users</h4>
   </div>
+</div>
 
-  <div class="panel-body">
-      <div class="form-group">
-        <div class="container">
-            <div class="row">
-              <%= render 'users_info' %>
-            </div>
-        </div>
-      </div>
+
+  <!-- white space -->
+  <div class="row">
+    <div class="col-sm-12" style="height:20px"></div>
   </div>
+
+
+<div class="container">
+  <%= render 'users_info' %>
+  <%= will_paginate @users %>
 </div>

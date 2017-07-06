@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
 
   def history
     @orders = current_user.orders.paginate(:page => params[:page], :per_page => 4)
-
   end
 
   def create
